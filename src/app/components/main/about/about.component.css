@@ -1,0 +1,20 @@
+.about {
+  height: 95vh;
+  width: 100%;
+}
+.about,
+.author {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+img {
+  width: 100%;
+}
+
+h1 {
+  margin-bottom: 5rem;
+}
