@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -18,8 +19,20 @@ export class LoginComponent {
     role: 'ROLE_UNIVERSITY'
   };
 
+  isLoggedIn: boolean = false;
+  userName: string | null = null;
 
-  constructor(private http: HttpClient, private router: Router) { }
+
+
+  constructor(private http: HttpClient, private router: Router) {
+    // Check if the user is logged in based on local storage data
+    this.isLoggedIn = !!localStorage.getItem('jwtToken');
+
+    // If the user is logged in, retrieve the user's name from local storage
+    if (this.isLoggedIn) {
+      this.userName = localStorage.getItem('userName');
+    }
+  }
 
   // Define your login method here
   login() {
@@ -43,7 +56,9 @@ export class LoginComponent {
 
             //TODO: close the modal after successful user login
 
+            // location.reload();
 
+            console.log(data);
             // Determine the role and navigate to the appropriate dashboard
             if (role === 'ROLE_UNIVERSITY') {
               console.log('Inside university-dashboard')
@@ -52,6 +67,8 @@ export class LoginComponent {
               console.log('Inside corporate-dashboard')
               this.router.navigate(['/corporate-dashboard']);
             }
+
+
           } else {
             alert("Error while logging in" + "\n" + message);
           }
