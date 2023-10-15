@@ -41,6 +41,7 @@ export class RegisterComponent {
             localStorage.setItem('role', role);
             localStorage.setItem('jwtToken', token);
 
+
             // Determine the role and navigate to the appropriate dashboard
             if (role === 'ROLE_UNIVERSITY') {
               console.log('Inside university-dashboard')
@@ -50,14 +51,13 @@ export class RegisterComponent {
               this.router.navigate(['/corporate-dashboard']);
             }
 
-            //TODO: close the modal after successful user registration
-
           } else {
-            alert("Error while registering" + "\n" + message);
+            console.log(message);
           }
         },
         error: (error: any) => {
-          console.error('Registration failed:', error);
+          const { message, status, data } = error;
+          console.error(message);
           // Handle registration errors, e.g., display an error message
         }
       }
