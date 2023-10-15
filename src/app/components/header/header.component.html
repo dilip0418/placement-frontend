@@ -12,21 +12,21 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item" *ngIf="!isLoggedIn">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" routerLink="">Home</a>
                 </li>
                 <li class="nav-item" *ngIf="!isLoggedIn">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" routerLink="/about">About</a>
                 </li>
                 <li class="nav-item" *ngIf="!isLoggedIn">
-                    <a class="nav-link" href="#">Contact Us</a>
+                    <a class="nav-link" routerLink="/contact">Contact Us</a>
                 </li>
             </ul>
             <div class="d-flex">
                 <!-- Display login and register buttons for logged-out users -->
                 <button *ngIf="!isLoggedIn" class="btn btn-outline-success me-2" type="button" data-bs-toggle="modal"
                     data-bs-target="#login">Login</button>
-                <button *ngIf="!isLoggedIn" class="btn btn-outline-warning" type="button"
-                    data-bs-toggle="modal" data-bs-target="#register">Register</button>
+                <button *ngIf="!isLoggedIn" class="btn btn-outline-warning" type="button" data-bs-toggle="modal"
+                    data-bs-target="#register">Register</button>
                 <!-- Display user name and logout button for logged-in users -->
                 <!-- <span *ngIf="isLoggedIn" class="nav-link me-2">Welcome, {{ userName }}</span> -->
                 <button *ngIf="isLoggedIn" class="btn btn-outline-danger" type="button"

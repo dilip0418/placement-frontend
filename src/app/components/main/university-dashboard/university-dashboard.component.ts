@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 interface College {
@@ -11,6 +12,15 @@ interface College {
   collegeAdminEmail: string;
 }
 
+interface PlacementData {
+  id: number,
+  name: string,
+  date: string,
+  qualification: string,
+  year: number,
+  collegeName: string,
+  collegeLocation: string
+}
 
 @Component({
   selector: 'app-university-dashboard',
@@ -19,17 +29,11 @@ interface College {
 })
 export class UniversityDashboardComponent implements OnInit {
 
-  API_URL = "http://localhost:8080/api/v1/college/"
+  API_URL_COLLEGE = "http://localhost:8080/api/v1/college/"
+  API_URL_DRIVE = "http://localhost:8080/api/v1/drive/"
+
 
   college!: College;
-
-  // college = {
-  //   id: '',
-  //   collegeName: '',
-  //   location: '',
-  //   collegeAdminName: '',
-  //   collegeAdminEmail: ''
-  // };
 
   collegeData = {
     collegeName: '',
@@ -47,9 +51,8 @@ export class UniversityDashboardComponent implements OnInit {
       college.collegeAdminEmail !== ''
     );
   }
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public router: Router) {
     // Get the college admin id from the local storage
-
   }
 
   ngOnInit() {
@@ -60,7 +63,7 @@ export class UniversityDashboardComponent implements OnInit {
 
     // Send a GET request to fetch the college details
     this.http.get<any>(
-      this.API_URL + `college-admin/${collegeAdminId}`,
+      this.API_URL_COLLEGE + `college-admin/${collegeAdminId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`
@@ -71,6 +74,8 @@ export class UniversityDashboardComponent implements OnInit {
         const { message, status, data } = response;
         console.log("message", message);
         this.college = data;
+
+        localStorage.setItem('collegeId', data.id);
       }
     );
   }
@@ -81,7 +86,7 @@ export class UniversityDashboardComponent implements OnInit {
     console.log(this.collegeData);
     console.log(token);
     this.http.post(
-      this.API_URL + "create",
+      this.API_URL_COLLEGE + "create",
       this.collegeData,
       {
         headers: {
@@ -102,8 +107,45 @@ export class UniversityDashboardComponent implements OnInit {
         }
       }
       );
-
   }
+
+  placementData!: PlacementData;
+
+
+  placements: Array<PlacementData> = [];
+
+
+  getPlacements() {
+    const token = localStorage.getItem('jwtToken');
+    const collegeId = localStorage.getItem('collegeId');
+    console.log(collegeId);
+    this.http.get<any>(this
+      .API_URL_DRIVE + `collegeId/${collegeId}`,
+
+      {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }
+    ).subscribe(
+      (response) => {
+        const { message, status, data } = response;
+
+        console.log(message);
+        if (status == '200') {
+          console.log(data);
+          for (let i of data) {
+            this.placements.push(i);
+          }
+          console.log(this.placements);
+        }
+        else {
+          console.log('failed');
+        }
+
+      });
+  }
+
 
   // Define the resetForm method to clear the form fields
   resetForm(form: NgForm) {
