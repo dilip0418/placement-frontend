@@ -1,0 +1,19 @@
+row {
+    /* height: 92vh; */
+}
+
+.container {
+    height: 87vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-container,
+.img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}

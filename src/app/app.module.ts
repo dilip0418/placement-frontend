@@ -10,6 +10,12 @@ import { LoginComponent } from './components/main/login/login.component';
 import { RegisterComponent } from './components/main/register/register.component';
 import { UniversityDashboardComponent } from './components/main/university-dashboard/university-dashboard.component';
 import { CorporateDashboardComponent } from './components/main/corporate-dashboard/corporate-dashboard.component';
+import { HomeComponent } from './components/main/home/home.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AboutComponent } from './components/main/about/about.component';
+import { ContactComponent } from './components/main/contact/contact.component';
+import { PlacementComponent } from './components/main/placement/placement.component';
+import { StudentComponent } from './components/main/student/student.component';
 
 
 
@@ -21,6 +27,12 @@ import { CorporateDashboardComponent } from './components/main/corporate-dashboa
     RegisterComponent,
     UniversityDashboardComponent,
     CorporateDashboardComponent,
+    HomeComponent,
+    FooterComponent,
+    AboutComponent,
+    ContactComponent,
+    PlacementComponent,
+    StudentComponent,
   ],
   imports: [
     BrowserModule,

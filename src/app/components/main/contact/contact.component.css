@@ -1,0 +1,14 @@
+container {
+    height: 95vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 2rem;
+}
+
+.form {
+    min-width: 50%;
+    padding: 1.5rem;
+}
