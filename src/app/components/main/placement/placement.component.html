@@ -1,0 +1,57 @@
+<!-- Placements Section -->
+<div class="container overflow-auto h-100">
+    <a routerLink="/university-dashboard" class="btn btn-primary btn-sm mt-5">Back</a>
+    <h1 class="text-center">Placements</h1>
+    <div class="row my-5 border p-2 rounded">
+        <div class="col-md-2" *ngFor="let drive of drives">
+            <div class="card text-white bg-secondary mb-3 btn btn-primary" data-bs-toggle="modal"
+                [attr.data-bs-target]="'#staticBackdrop' + drive.id" style="max-width: 100%">
+                <div class="card-header text-center">{{ drive.name | uppercase | slice:0:8 }}...</div>
+            </div>
+
+            <!-- modal -->
+            <div class="modal fade" [id]="'staticBackdrop' + drive.id" data-bs-backdrop="static"
+                data-bs-keyboard="false" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="staticBackdropLabel">
+                                {{ drive.name }}
+                            </h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                ID : {{ drive.id }}
+                            </p>
+                            <p>
+                                Name : {{ drive.name }}
+                            </p>
+                            <p>
+                                Date : {{ drive.date }}
+                            </p>
+                            <p>
+                                Qualification : {{ drive.qualification }}
+                            </p>
+                            <p>
+                                Year : {{ drive.year }}
+                            </p>
+                            <p>
+                                collegeName : {{ drive.collegeName }}
+                            </p>
+                            <p>
+                                collegeLocation : {{ drive.collegeLocation }}
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal e -->
+        </div>
+    </div>
+</div>

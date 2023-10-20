@@ -22,6 +22,46 @@ h1 {
 }
 
 .carousel-caption {
+    min-height: 100px;
     background-color: rgba(48, 47, 47, 0.463);
     color: azure;
+}
+
+
+.carousel-item {
+    min-height: 400px;
+    background-size: cover;
+    padding: 10%;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    /* height: 100%; */
+    width: 50%;
+}
+
+
+/* Default */
+.carousel-item img {
+    /* height: 400px; */
+}
+
+
+
+/* Small screens */
+@media (max-width: 767px) {
+
+    .carousel-item,
+    .carousel-item img {
+        height: 70%;
+    }
+}
+
+/* Extra small */
+@media (max-width: 575px) {
+
+    .carousel-item,
+    .carousel-item img {
+        height: 50%;
+    }
 }
