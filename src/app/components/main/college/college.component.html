@@ -1,0 +1,92 @@
+<div class="container overflow-auto h-100">
+    <h3>
+        Colleges
+    </h3>
+    <div *ngFor="let college of colleges">
+        <p>
+            {{college.collegeName}}
+        </p>
+    </div>
+
+
+    <!-- Student Details table -->
+    <div class="mt-5" *ngFor="let college of colleges">
+        <h2>College Details</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Admin</th>
+                    <th>Admin Mail</th>
+                    <th>Action</th>
+                    <!--<th>Delete</th> -->
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <tr>
+                    <td>{{ college.id }}</td>
+                    <td>{{ college.collegeName }}</td>
+                    <td>{{ college.location }}</td>
+                    <td>{{ college.collegeAdminName }}</td>
+                    <td>{{ college.collegeAdminEmail }}</td>
+
+                    <td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            [attr.data-bs-target]="'#staticBackdrop' + college.id">
+                            Schedule Drive
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Modal for Edit Student -->
+        <div class="modal fade" [id]="'staticBackdrop' + college.id" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5">Schedule Drive</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Student editing form here, use Angular form controls to bind student data -->
+                        <form #scheduleForm="ngForm" (ngSubmit)="scheduleDrive()">
+                            <div class="form-group">
+                                <label for="name">Drive Name:</label>
+                                <input type="text" [(ngModel)]="drivePayload.name" name="name" id="name"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Drive Date</label>
+                                <input type="text" [(ngModel)]="drivePayload.date" name="date" id="date"
+                                    class="form-control" placeholder="yyyy-MM-dd">
+                            </div>
+                            <div class="form-group p-2">
+                                <label for="name">Qualification :</label>
+                                <input type="text" [(ngModel)]="drivePayload.qualification" name="qualification"
+                                    id="qualification" class="form-control" placeholder="Qualification" />
+                            </div>
+                            <div class="form-group p-2">
+                                <label for="name">Year of Pass :</label>
+                                <input type="text" [(ngModel)]="drivePayload.year" name="year" id="year"
+                                    class="form-control" placeholder="Year of Pass" />
+                            </div>
+                            <div class="form-group p-2">
+                                <label for="name">College Id :</label>
+                                <input type="text" [(ngModel)]="drivePayload.collegeId" name="collegeId" id="collegeId"
+                                    class="form-control" placeholder="collegeId of Pass" />
+                            </div>
+                            <div class="form-group p-2 text-center">
+                                <button type="button" class="btn btn-primary me-3"
+                                    data-bs-dismiss="modal">Cancel</button>
+                                <input type="submit" value="Schedule" class="btn btn-primary" data-bs-dismiss="modal" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

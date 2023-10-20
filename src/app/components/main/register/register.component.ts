@@ -41,7 +41,6 @@ export class RegisterComponent {
             localStorage.setItem('role', role);
             localStorage.setItem('jwtToken', token);
 
-
             // Determine the role and navigate to the appropriate dashboard
             if (role === 'ROLE_UNIVERSITY') {
               console.log('Inside university-dashboard')

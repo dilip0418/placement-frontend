@@ -16,6 +16,7 @@ import { AboutComponent } from './components/main/about/about.component';
 import { ContactComponent } from './components/main/contact/contact.component';
 import { PlacementComponent } from './components/main/placement/placement.component';
 import { StudentComponent } from './components/main/student/student.component';
+import { CollegeComponent } from './components/main/college/college.component';
 
 
 
@@ -33,6 +34,7 @@ import { StudentComponent } from './components/main/student/student.component';
     ContactComponent,
     PlacementComponent,
     StudentComponent,
+    CollegeComponent,
   ],
   imports: [
     BrowserModule,

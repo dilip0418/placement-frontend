@@ -31,6 +31,8 @@ export class HeaderComponent {
     localStorage.removeItem('email');
     localStorage.removeItem('role');
     localStorage.removeItem('jwtToken');
+    localStorage.removeItem('collegeId');
+    
     // localStorage.removeItem('userName'); // Remove user name if you store it
 
     // Set the user as logged out

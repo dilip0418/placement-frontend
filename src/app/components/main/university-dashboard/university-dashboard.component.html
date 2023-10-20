@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-5 overflow-auto h-100">
     <div class="card text-center">
         <div class="card-header">
             Welcome
@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="btn-container mt-3">
-        <button class="btn btn-primary me-2" (click)="getPlacements()">Placements</button>
+        <button routerLink="/placement" class="btn btn-primary me-2" (click)="getPlacements()">Placements</button>
         <a routerLink="/student" class="btn btn-success">Students</a>
     </div>
 </div>
@@ -55,59 +55,3 @@
 
 
 <!-- Placements Section -->
-<div class="container">
-    <!-- <a routerLink="/university-dashboard" class="btn btn-primary btn-sm mt-5">Back</a> -->
-    <h1 class="text-center">Placements</h1>
-    <div class="row my-5 border p-2 rounded">
-        <div class="col-md-2" *ngFor="let item of placements">
-            <div class="card text-white bg-secondary mb-3 btn btn-primary" data-bs-toggle="modal"
-                [attr.data-bs-target]="'#staticBackdrop' + item.id" style="max-width: 100%">
-                <div class="card-header text-center">{{ item.name |uppercase }}</div>
-            </div>
-
-            <!-- modal -->
-            <div class="modal fade" [id]="'staticBackdrop' + item.id" data-bs-backdrop="static" data-bs-keyboard="false"
-                tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title" id="staticBackdropLabel">
-                                {{ item.name }}
-                            </h3>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p>
-                                ID : {{ item.id }}
-                            </p>
-                            <p>
-                                Name : {{ item.name }}
-                            </p>
-                            <p>
-                                Date : {{ item.date }}
-                            </p>
-                            <p>
-                                Qualification : {{ item.qualification }}
-                            </p>
-                            <p>
-                                Year : {{ item.year }}
-                            </p>
-                            <p>
-                                collegeName : {{ item.collegeName }}
-                            </p>
-                            <p>
-                                collegeLocation : {{ item.collegeLocation }}
-                            </p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                Close
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- modal e -->
-        </div>
-    </div>
-</div>
