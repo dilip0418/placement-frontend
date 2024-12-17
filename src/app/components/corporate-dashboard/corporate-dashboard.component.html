@@ -1,0 +1,79 @@
+<div class="container overflow-auto h-100">
+  <div class="text-center">
+      <h3>Welcome</h3>
+  </div>
+  <button routerLink="/college" type="button" class="btn btn-outline-primary">Schedule Drive</button>
+
+  <div class="container text-center">
+      <div *ngIf="drives.length==0">
+          <div class="card border-dark m-auto" style="max-width: 18rem;">
+              <div class="card-header">
+                  <h5 class="card-header">
+                      No drives found
+                  </h5>
+                  <p>Create drive</p>
+                  <button routerLink="/college"  class="btn btn-outline-primary">
+                      Schedule Drive
+                  </button>
+              </div>
+          </div>
+      </div>
+
+      <!--TODO: Create drive modal -->
+
+      <div *ngIf="(drives.length != 0)"
+          class="d-flex flex-wrap justify-content-evenly align-items-center gap-3 my-5 border p-2 rounded">
+          <div class="col-lg-4 col-md-5 col-sm-6" *ngFor="let drive of drives">
+              <div class="card text-white bg-secondary mb-3 btn btn-primary w-100" data-bs-toggle="modal"
+                  [attr.data-bs-target]="'#staticBackdrop' + drive.id">
+                  <div class="card-header text-center">{{ drive.name | uppercase }}</div>
+              </div>
+
+              <!-- modal -->
+              <div class="modal fade" [id]="'staticBackdrop' + drive.id" data-bs-backdrop="static"
+                  data-bs-keyboard="false" tabindex="-1">
+                  <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h3 class="modal-title" id="staticBackdropLabel">
+                                  {{ drive.name }}
+                              </h3>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                  aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                              <p>
+                                  ID : {{ drive.id }}
+                              </p>
+                              <p>
+                                  Name : {{ drive.name }}
+                              </p>
+                              <p>
+                                  Date : {{ drive.date }}
+                              </p>
+                              <p>
+                                  Qualification : {{ drive.qualification }}
+                              </p>
+                              <p>
+                                  Year : {{ drive.year }}
+                              </p>
+                              <p>
+                                  collegeName : {{ drive.collegeName }}
+                              </p>
+                              <p>
+                                  collegeLocation : {{ drive.collegeLocation }}
+                              </p>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                  Close
+                              </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <!-- modal ends -->
+          </div>
+      </div>
+  </div>
+</div>

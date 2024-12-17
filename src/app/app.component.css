@@ -1,5 +1,4 @@
-body {
-    height: 100vh;
-    background-color: #fafafa;
-    scroll-behavior: smooth scroll;
+main {
+  padding: 20px;
+  min-height: 100vh;
 }

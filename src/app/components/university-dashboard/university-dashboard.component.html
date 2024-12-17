@@ -1,0 +1,58 @@
+<div class="container mt-5 overflow-auto h-100">
+  <div class="card text-center">
+      <div class="card-header">
+          Welcome
+      </div>
+      <div *ngIf="Iscollege" class="card-body">
+          <h5 class="card-title">College Name: {{ college.collegeName }}</h5>
+          <p class="card-text">college admin name: {{ college.collegeAdminName }}</p>
+          <p class="card-text">location: {{ college.location }}</p>
+
+      </div>
+      <div *ngIf="!Iscollege" class="card-body">
+          <p class="card-text">No collge created yet <br>create one</p>
+          <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal"
+              data-bs-target="#registerCollege">Register College</button>
+      </div>
+  </div>
+  <div class="btn-container mt-3">
+      <button routerLink="/placement" class="btn btn-primary me-2" >Placements</button>
+      <!-- (click)="getPlacements()" -->
+      <a routerLink="/student" class="btn btn-success">Students</a>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="registerCollege" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form (ngSubmit)="registerCollege(registerForm)" #registerForm="ngForm">
+                  <div class="form-group">
+                      <label for="collegeName">College Name</label>
+                      <input type="text" class="form-control" id="collegeName" name="collegeName"
+                          ngModel required>
+                  </div>
+                  <div class="form-group">
+                      <label for="location">Location</label>
+                      <input type="text" class="form-control" id="location" name="location"
+                          ngModel required>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Create</button>
+
+                      <button type="button" class="btn btn-secondary" (click)="resetForm(registerForm)">Reset</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<!-- Placements Section -->

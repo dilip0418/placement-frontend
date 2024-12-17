@@ -1,20 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
+<header>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+    <div class="container-fluid ">
+        <a class="navbar-brand" href="#">
+            <img src="https://getbootstrap.com/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24"
+                class="d-inline-block align-text-top" />
+            Placement
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+                </li>
+                <li class="nav-item" >
+                    <a class="nav-link" routerLink="/about">About</a>
+                </li>
+                <li class="nav-item" *ngIf="isLoggedIn">
+                    <a class="nav-link" routerLink="/contact">Contact Us</a>
+                </li>
+                <li class="nav-item" *ngIf="isLoggedIn && userRole === 'ROLE_CORPORATE' ">
+                    <a class="nav-link" routerLink="/corporate-dashboard">DashBoard</a>
+                </li>
+                <li class="nav-item" *ngIf="isLoggedIn && userRole ==='ROLE_UNIVERSITY' ">
+                    <a class="nav-link" routerLink="/university-dashboard">DashBoard</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <!-- Display login and register buttons for logged-out users -->
+                <button *ngIf="!isLoggedIn" class="btn btn-outline-success me-2" type="button" data-bs-toggle="modal"
+                    data-bs-target="#login">Login</button>
+                <button *ngIf="!isLoggedIn" class="btn btn-outline-warning" type="button" data-bs-toggle="modal"
+                    data-bs-target="#register">Register</button>
+                <!-- Display user name and logout button for logged-in users -->
+                <!-- <span *ngIf="isLoggedIn" class="nav-link me-2">Welcome, {{ userName }}</span> -->
+                <button *ngIf="isLoggedIn" class="btn btn-outline-danger" type="button"
+                    (click)="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+</nav>
+<header>
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Hello, world!</title>
-</head>
-
-<body>
-  <!-- <div class="container"> -->
-  <app-header></app-header>
-  <router-outlet></router-outlet>
-  <app-footer></app-footer>
-  <!-- </div> -->
-</body>
-
-</html>
+<div>
+    <div class="container-fluid">
+        <div class="row">
+            <main role="main" class="col-md-12">
+                <router-outlet></router-outlet>
+            </main>
+        </div>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="bg-dark text-light text-center">© Copyright-2023</div>
+  </footer>
+  
